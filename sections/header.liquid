@@ -1,0 +1,33 @@
+<header id="site-header" class="d-flex justify-content-between align-items-center">
+  <div class="logo">
+    <a href="/" class="site-logo">
+      {% if section.settings.logo %}
+        <img src="{{section.settings.logo | img_url: '200x200'}}" alt="">
+      {% else %}
+        {{ shop.name }}
+      {% endif %}
+    </a>
+  </div>
+  <div class="d-flex gap-3">
+    {% for link in linklists['main-menu'].links %}
+      <a>{{ link.title | link_to: link.url }}</a>
+    {% endfor %}
+  </div>
+  <div class="right-icons">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <a href="/cart"><i class="fa-sharp fa-solid fa-cart-shopping">{{cart.item_count}}</i></a>
+  </div>
+</header>
+
+{% schema %}
+{
+  "name": "Header",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Upload logo"
+    }
+  ]
+}
+{% endschema %}
