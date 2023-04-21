@@ -1,0 +1,59 @@
+<div class="d-flex justify-content-between mt-5 mb-5">
+  <div class="d-flex position-relative">
+    <div class="position-absolute bottom-0 text-container">
+      <h1>{{section.settings.vide_cta_image_title}}</h1>
+      <p>{{section.settings.vide_cta_image_desc}}</p>
+      <a href="{{section.settings.vide_cta_image_redirect_url}}"><i class="fas fa-angle-double-right"></i></a>
+    </div>
+    <img class="image-video-cta ml-1" src="https://dummyimage.com/400x600/ddd/00000&text=hello" alt="">
+  </div>
+  <div class="align-self-center">
+    {{section.settings.vide_cta_video_link}}
+    <h4>{{section.settings.vide_cta_video_title}}</h4>
+    <p>{{section.settings.vide_cta_video_desc}}</p>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Video CTA",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "vide_cta_image",
+      "label": "Video CTA Image"
+    },
+    {
+      "type": "text",
+      "id": "vide_cta_image_title",
+      "label": "Image Title"
+    },
+    {
+      "type": "textarea",
+      "id": "vide_cta_image_desc",
+      "label": "Image description"
+    },
+    {
+      "type": "url",
+      "id": "vide_cta_image_redirect_url",
+      "label": "Redirect URL"
+    },
+    {
+      "type": "video_url",
+      "id": "vide_cta_video_link",
+      "label": "Video id",
+      "accept": ["youtube"]
+    },
+    {
+      "type": "text",
+      "id": "vide_cta_video_title",
+      "label": "Video Title"
+    },
+    {
+      "type": "textarea",
+      "id": "vide_cta_video_desc",
+      "label": "Video Description"
+    }
+  ]
+}
+{% endschema %}
