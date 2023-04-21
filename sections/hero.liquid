@@ -1,0 +1,76 @@
+<div id="carouselExampleIndicators" class="carousel slide">
+  <div class="carousel-indicators">
+    <button
+      type="button"
+      data-bs-target="#carouselExampleIndicators"
+      data-bs-slide-to="0"
+      class="active"
+      aria-current="true"
+      aria-label="Slide 1"
+    ></button>
+    <button
+      type="button"
+      data-bs-target="#carouselExampleIndicators"
+      data-bs-slide-to="1"
+      aria-label="Slide 2"
+    ></button>
+    <button
+      type="button"
+      data-bs-target="#carouselExampleIndicators"
+      data-bs-slide-to="2"
+      aria-label="Slide 3"
+    ></button>
+  </div>
+  <div class="carousel-inner">
+    {% for block in section.blocks %}
+        <div class="carousel-item active">
+            <img src="{{ block.settings.slide_image | img_url: "1920x1080"}}" class="d-block w-100 overflow-hidden" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+                <a href="{{block.settings.slide_link}}"><h5>{{block.settings.slide_title}}</h5></a>
+                <p>{{block.settings.slide_description}}</p>
+              </div>
+          </div>
+      {% endfor %}
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+
+{% schema %}
+  {
+    "blocks": [
+      {
+        "type": "slide",
+        "name": "Hero",
+        "settings": [
+          {
+            "id": "slide_image",
+            "type": "image_picker",
+            "label": "Slider Image"
+          },
+          {
+            "type": "url",
+            "id": "slide_link",
+            "label": "Slide link"
+          },
+          {
+            "type": "text",
+            "id": "slide_title",
+            "label": "Slide Heading"
+          },
+          {
+            "type": "textarea",
+            "id": "slide_description",
+            "label": "Slide Description"
+          }                         
+        ]
+      }
+    ]
+  }
+{% endschema %}
