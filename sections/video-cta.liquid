@@ -8,7 +8,10 @@
     <img class="image-video-cta ml-1" src="https://dummyimage.com/400x600/ddd/00000&text=hello" alt="">
   </div>
   <div class="align-self-center">
-    {{section.settings.vide_cta_video_link}}
+    {% comment %} {{section.settings.vide_cta_video_id}} {% endcomment %}
+    <div class="embed-responsive embed-responsive-16by9">
+      <iframe width="560" height="315" class="embed-responsive-item" src="https://www.youtube.com/embed/{{section.settings.vide_cta_video_id}}" frameborder="0"></iframe>
+    </div>
     <h4>{{section.settings.vide_cta_video_title}}</h4>
     <p>{{section.settings.vide_cta_video_desc}}</p>
   </div>
@@ -39,10 +42,9 @@
       "label": "Redirect URL"
     },
     {
-      "type": "video_url",
-      "id": "vide_cta_video_link",
-      "label": "Video id",
-      "accept": ["youtube"]
+      "type": "text",
+      "id": "vide_cta_video_id",
+      "label": "Video id"
     },
     {
       "type": "text",
