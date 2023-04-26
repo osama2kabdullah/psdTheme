@@ -1,0 +1,46 @@
+<br>
+<h1 class="text-center">{{page.title}}</h1>
+<br>
+{% form 'contact' %}
+  {{ form.errors | default_errors }}
+  <form class="row g-3 needs-validation" novalidate>
+    <div class="d-flex gap-3">
+      <div class="w-100">
+        <label for="first-name" class="form-label">First name</label>
+        <input name="contact[first_name]" type="text" class="form-control" id="first-name" required>
+        <div class="valid-feedback">Looks good!</div>
+      </div>
+
+      <div class="w-100">
+        <label for="last-name" class="form-label">Last name</label>
+        <input name="contact[last_name]" type="text" class="form-control" id="last-name" required>
+        <div class="valid-feedback">Looks good!</div>
+      </div>
+    </div>
+    <br>
+    <div class="">
+      <label for="email" class="form-label">Email</label>
+      <div class="input-group has-validation">
+        <span class="input-group-text" id="inputGroupPrepend">@</span>
+        <input
+          type="text"
+          name="contact[email]"
+          class="form-control"
+          id="email"
+          aria-describedby="inputGroupPrepend"
+          required
+        >
+        <div class="invalid-feedback">Please choose a username.</div>
+      </div>
+    </div>
+    <br>
+    <div class="mb-3">
+      <label for="message" class="form-label">Message</label>
+      <textarea name="contact[body]" class="form-control" id="message" rows="3"></textarea>
+    </div>
+
+    <div class="col-12">
+      <input class="btn btn-primary" type="submit" value="Submit form">
+    </div>
+  </form>
+{% endform %}

@@ -11,7 +11,9 @@
   </head>
   <body class="container">
     {% section 'header' %}
-    {{ content_for_layout }}
+    <main role="main">
+      {{ content_for_layout }}
+    </main>
     <!-- custom CSS -->
     {{ 'style.css' | asset_url | stylesheet_tag }}
     <!-- Boostrtrup JS -->
