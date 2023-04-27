@@ -1,24 +1,31 @@
-<h1>{{section.settings.section_title}}</h1>
+<h1>{{ section.settings.section_title }}</h1>
 {% form 'customer' %}
   {{ form.errors | default_errors }}
   {% if form.posted_successfully? %}
     <p>Successfully subcribe</p>
   {% else %}
-    <input type="hidden" name="contact[tags]" value="newsletter">
-    <input
-      name="contact[email]"
-      id="Email"
-      type="email"
-      autocorrect="off"
-      autocapitalize="off"
-      value="{% if customer.email != blank %}{{ customer.email }}{% endif %}"
-      placeholder="{{section.settings.section_email_placeholder}}"
-    >
-    <input name="commit" id="Subscribe" type="submit" value="{{section.settings.section_submit_button_text}}">
+    <div class="input-group w-50 flex-nowrap">
+      <input type="hidden" name="contact[tags]" value="newsletter">
+      <span class="input-group-text" id="addon-wrapping">@</span>
+      <input
+        name="contact[email]"
+        id="Email"
+        type="email"
+        autocorrect="off"
+        autocapitalize="off"
+        value="{% if customer.email != blank %}{{ customer.email }}{% endif %}"
+        placeholder="{{section.settings.section_email_placeholder}}"
+        class="form-control"
+        aria-label="Username"
+        aria-describedby="addon-wrapping"
+      >
+      <input class="btn btn-outline-secondary" name="commit" id="Subscribe" type="submit" value="{{section.settings.section_submit_button_text}}">
+    </div>
+
   {% endif %}
 {% endform %}
 
-<p>{{section.settings.section_peragraph}}</p>
+<p>{{ section.settings.section_peragraph }}</p>
 <br>
 <br>
 
@@ -36,7 +43,7 @@
       "type": "text",
       "id": "section_email_placeholder",
       "label": "Email placeholder",
-      "default": "Enter youur email"
+      "default": "Enter your email"
     },
     {
       "type": "text",
@@ -47,7 +54,7 @@
     {
       "type": "textarea",
       "id": "section_peragraph",
-      "label":"Peragraph",
+      "label": "Peragraph",
       "default": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nulla et impedit mollitia dignissimos hic delectus ex quidem voluptatibus, rem aut repudiandae voluptates est corrupti officiis eius asperiores explicabo natus aliquid?"
     }
   ]
