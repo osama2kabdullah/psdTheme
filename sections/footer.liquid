@@ -1,0 +1,38 @@
+<footer class="d-flex gap-3 align-items-end">
+  <img src="{{section.settings.footer_image | img_url: '200x200'}}" alt="1992">
+  {% for block in section.blocks %}
+      <a href="{{block.settings.footer_url}}">{{ block.settings.footer_url_text }}</a>
+  {% endfor %}
+</footer>
+
+{% schema %}
+{
+  "name": "Footer",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "footer_image",
+      "label": "Footer Image"
+    }
+  ],
+  "max_blocks": 10,
+  "blocks": [
+    {
+      "type": "footer_url",
+      "name": "URL",
+      "settings": [
+        {
+          "type": "url",
+          "id": "footer_url",
+          "label": "Footer URL"
+        },
+        {
+          "type": "text",
+          "id": "footer_url_text",
+          "label": "Footer URL Label"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

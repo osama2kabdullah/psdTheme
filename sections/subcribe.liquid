@@ -1,0 +1,55 @@
+<h1>{{section.settings.section_title}}</h1>
+{% form 'customer' %}
+  {{ form.errors | default_errors }}
+  {% if form.posted_successfully? %}
+    <p>Successfully subcribe</p>
+  {% else %}
+    <input type="hidden" name="contact[tags]" value="newsletter">
+    <input
+      name="contact[email]"
+      id="Email"
+      type="email"
+      autocorrect="off"
+      autocapitalize="off"
+      value="{% if customer.email != blank %}{{ customer.email }}{% endif %}"
+      placeholder="{{section.settings.section_email_placeholder}}"
+    >
+    <input name="commit" id="Subscribe" type="submit" value="{{section.settings.section_submit_button_text}}">
+  {% endif %}
+{% endform %}
+
+<p>{{section.settings.section_peragraph}}</p>
+<br>
+<br>
+
+{% schema %}
+{
+  "name": "Newsletter",
+  "settings": [
+    {
+      "type": "text",
+      "id": "section_title",
+      "label": "Heading",
+      "default": "Newsletter"
+    },
+    {
+      "type": "text",
+      "id": "section_email_placeholder",
+      "label": "Email placeholder",
+      "default": "Enter youur email"
+    },
+    {
+      "type": "text",
+      "id": "section_submit_button_text",
+      "label": "Submit button text",
+      "default": "Submit"
+    },
+    {
+      "type": "textarea",
+      "id": "section_peragraph",
+      "label":"Peragraph",
+      "default": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nulla et impedit mollitia dignissimos hic delectus ex quidem voluptatibus, rem aut repudiandae voluptates est corrupti officiis eius asperiores explicabo natus aliquid?"
+    }
+  ]
+}
+{% endschema %}
