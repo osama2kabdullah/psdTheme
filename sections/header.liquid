@@ -1,22 +1,40 @@
-<header id="site-header" class="d-flex justify-content-between align-items-center">
-  <div class="logo">
-    <a href="/" class="site-logo">
-      {% if section.settings.logo %}
-        <img src="{{section.settings.logo | img_url: '200x200'}}" alt="">
-      {% else %}
-        {{ shop.name }}
+<header>
+  <div class="d-flex justify-content-between">
+    <p><i class="fa-solid fa-bullhorn"></i> 30% off for Eid-Ul-Fitr</p>
+    <div class="d-flex gap-3">
+      
+      {% if customer %}
+        <a href="{{ routes.account_url }}">Account</a>
+        {% else %}
+        {{ 'Log in' | customer_login_link }}
+        {{ 'Register' | customer_register_link }}
       {% endif %}
-    </a>
+    
+    </div>
   </div>
-  <div class="d-flex gap-3">
-    {% for link in linklists['main-menu'].links %}
-      <a>{{ link.title | link_to: link.url }}</a>
-    {% endfor %}
-  </div>
-  <div class="right-icons">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <a href="/cart"><i class="fa-sharp fa-solid fa-cart-shopping">{{cart.item_count}}</i></a>
-  </div>
+
+  <section id="site-header" class="d-flex justify-content-between align-items-center">
+    <div class="logo">
+      <a href="/" class="site-logo">
+        {% if section.settings.logo %}
+          <img src="{{section.settings.logo | img_url: '200x200'}}" alt="">
+        {% else %}
+          {{ shop.name }}
+        {% endif %}
+      </a>
+    </div>
+    <div class="d-flex gap-3">
+      {% for link in linklists['main-menu'].links %}
+        <a>{{ link.title | link_to: link.url }}</a>
+      {% endfor %}
+    </div>
+    <div class="right-icons">
+      <i class="fa-solid fa-magnifying-glass"></i>
+      <a href="/cart"
+        ><i class="fa-sharp fa-solid fa-cart-shopping">{{ cart.item_count }}</i></a
+      >
+    </div>
+  </section>
 </header>
 
 {% schema %}

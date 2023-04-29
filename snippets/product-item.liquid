@@ -1,6 +1,6 @@
 <div>
   <a href="{{product.url}}">
-  <img class="card-img-top" src="{{product.featured_image | img_url : width: 400}}">
+  <img class="w-100" src="{{product.featured_image | img_url : "1024x720"}}">
   <div class="card-body">
     <h5 class="card-title">{{ product.title }}</h5>
     <p class="card-text">{{ product.price | money}}</p>

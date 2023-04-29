@@ -1,4 +1,8 @@
+<br>
+<img src="{{collection.image | img_url: "1024x250" }}" class="w-100" alt="Responsive image">
+<br>
 <section class="text-center">
+  
   <br>
   <h1>{{ collection.title }}</h1>
   <p>{{ collection.description }}</p>
@@ -18,9 +22,9 @@
     {% endfor %}
   </select>
 
+  <br>
+  <br>
   {% paginate collection.products by 8 -%}
-    <br>
-    <br>
     <div class="collection-group">
       {% for product in collection.products %}
         {% render 'product-item', product: product %}
@@ -28,7 +32,9 @@
     </div>
     <br>
     <br>
-    {% render 'pagination-custom', paginate: paginate %}
+    {% if collection.all_products_count > 8 %}
+      {% render 'pagination-custom', paginate: paginate %}
+    {% endif %}
   {%- endpaginate %}
 </section>
 

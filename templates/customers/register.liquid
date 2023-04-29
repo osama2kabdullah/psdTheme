@@ -1,0 +1,50 @@
+<br>
+<h1 class="text-center">Register</h1>
+<br>
+
+{% form 'create_customer' %}
+  {{ form.errors | default_errors }}
+  <div class="w-75 mx-auto">
+    <form class="row g-3 needs-validation" novalidate>
+      <div class="d-flex gap-3">
+        <div class="w-100">
+          <label for="first-name" class="form-label">First name</label>
+          <input name="customer[first_name]" type="text" class="form-control" id="first-name" required>
+          <div class="valid-feedback">Looks good!</div>
+        </div>
+
+        <div class="w-100">
+          <label for="last-name" class="form-label">Last name</label>
+          <input name="customer[last_name]" type="text" class="form-control" id="last-name" required>
+          <div class="valid-feedback">Looks good!</div>
+        </div>
+      </div>
+      <br>
+      <div class="">
+        <label for="email" class="form-label">Email</label>
+        <div class="input-group has-validation">
+          <span class="input-group-text" id="inputGroupPrepend">@</span>
+          <input
+            type="text"
+            name="customer[email]"
+            class="form-control"
+            id="email"
+            aria-describedby="inputGroupPrepend"
+            required
+          >
+          <div class="invalid-feedback">Please choose a username.</div>
+        </div>
+      </div>
+      <br>
+
+      <div class="form-group mb-3">
+        <label for="inputPassword">Password</label>
+        <input type="password" name="customer[password]" class="form-control" id="inputPassword" placeholder="Password">
+      </div>
+
+      <div style="width: min-content" class="mx-auto">
+        <input class="btn btn-primary" type="submit" value="Create">
+      </div>
+    </form>
+  </div>
+{% endform %}
